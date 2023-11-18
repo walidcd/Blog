@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto+Mono:wght@300&display=swap');
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* .blogs{
+  border: 20px solid black;
+} */
+/* 
+.footer{
+  margin-bottom: 0;
+}
+
+.post{
+  width: 100vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.titleContainer{
+  justify-content: center;
+}
+
+.post > div{
+  justify-content: center;
+}
+
+.subtitle{
+  color: red;
+} */
