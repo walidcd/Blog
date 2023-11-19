@@ -38,7 +38,7 @@ export async function getStaticProps() {
 
 export const Blogs = ({ blogs }) => {
   return (
-    <div className="blogs dark:text-white ">
+    <div className="blogs dark:text-white">
       <div className="mx-auto ">
         <h1 className="text-black dark:text-white text-3xl my-12 mx-auto text-center font-black">
           Latest blogs
