@@ -9,8 +9,7 @@ export async function getStaticPaths() {
   const slugs = markdownFiles.map((file) => file.replace(".md", ""));
 
   const paths = slugs.map((slug)=>{return {params:{slug:slug}}});
-  // console.log("paths");
-  // console.log(paths);
+
   return {
     paths,
     fallback: false 
@@ -34,12 +33,12 @@ export const getStaticProps=(context)=>{
 
 const Postpage = ({blog,title,subtitle}) => {
     return ( 
-        <div className="post prose ">
-          <div className="titleContainer ">
-            <h1 className="title ">{title}</h1>
-            <h2 className="subtitle">{subtitle}</h2>
+        <div className="post prose mt-16  dark:prose-invert max-w-5xl mx-auto">
+          <div>
+            <h1 className="text-center">{title}</h1>
+            <h2>{subtitle}</h2>
           </div>
-          <div className="contentContainer ">
+          <div >
             <Markdown>{blog}</Markdown>
           </div>
         </div>

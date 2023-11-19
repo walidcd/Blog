@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import fs from "fs";
 import Link from "next/link";
@@ -14,10 +13,20 @@ export async function getStaticProps() {
     const matterResult = matter(content);
     return {
       title: matterResult.data.title,
-      date: matterResult.data.date,
+      date: Date.parse(matterResult.data.date),
       subtitle: matterResult.data.subtitle,
       slug: fileName.replace(".md", ""),
     };
+  });
+  posts.sort((a, b) => b.date - a.date);
+
+  // Format the date for display
+  posts.forEach((post) => {
+    post.date = new Date(post.date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
   });
 
   return {
@@ -29,20 +38,33 @@ export async function getStaticProps() {
 
 export const Blogs = ({ blogs }) => {
   return (
-    <div className="blogs">
-      <h1>All blogs</h1>
-      {blogs.map((blog, i) => (
-        <div
-          key={i}
-          // className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-        >
-          <Link href={`/posts/${blog.slug}`}>
-            <h2>{blog.title}</h2>
-            <p>{blog.subtitle}</p>
-            <p>{blog.date}</p>
+    <div className="blogs dark:text-white ">
+      <div className="mx-auto ">
+        <h1 className="text-black dark:text-white text-3xl my-12 mx-auto text-center font-black">
+          Latest blogs
+        </h1>
+      </div>
+      <div className="w-fit mx-auto grid grid-cols-1 md:grid-cols-2 justify-items-center justify-center gap-y-5 gap-x-6 mt-10 mb-5">
+        {blogs.map((blog, i) => (
+          <Link
+            href={`/posts/${blog.slug}`}
+            className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 "
+            key={blog.slug}
+          >
+            <div className="flex flex-col h-full justify-between">
+              <div>
+                <h2 className="text-xl text-center font-extrabold line-clamp-2">
+                  {blog.title}
+                </h2>
+                <p className="text-lg text-center font-extralight line-clamp-2 md:line-clamp-3">
+                  {blog.subtitle}
+                </p>
+              </div>
+              <p className="text-center font-bold">{blog.date}</p>
+            </div>
           </Link>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
