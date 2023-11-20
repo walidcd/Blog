@@ -7,9 +7,7 @@ export async function getStaticPaths() {
   const fileNames = fs.readdirSync(folder);
   const markdownFiles = fileNames.filter((file) => file.endsWith(".md"));
   const slugs = markdownFiles.map((file) => file.replace(".md", ""));
-
   const paths = slugs.map((slug)=>{return {params:{slug:slug}}});
-
   return {
     paths,
     fallback: false 

@@ -10,7 +10,7 @@ const About = () => {
       <div className=" flex flex-col justify-center  flex-grow p-4">
           <div className=" flex flex-row justify-center ">
           <img
-          src="/714.jpg"
+          src="/walid.jpg"
           className="w-32 rounded-full align-middle"
           alt="Avatar" />
           </div>
